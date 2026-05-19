@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{- $aliases := site.Params.publications.authorAliases | default slice -}}
+{{- $pages := .Pages.ByDate.Reverse -}}
+<section class="sec sec--pubs-timeline">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ .Title }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ with .Content }}<div class="pubs-intro">{{ . }}</div>{{ end }}
+  <div class="pubs-timeline">
+    {{ range ($pages.GroupByParamDate "date" "2006") }}
+      <div class="yr-group">
+        <div class="yr">{{ .Key }}</div>
+        <div class="pubs">
+          {{ range .Pages }}
+            {{- $p := .Params -}}
+            <div class="pub{{ if $p.featured }} pub--featured{{ end }}">
+              <a class="ttl" href="{{ $p.doi_url }}"{{ if site.Params.linkExternalNewTab }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
+              <div class="au">{{ partial "publications/authors.html" (dict "authors" $p.authors "aliases" $aliases) }}</div>
+              <div class="vn">{{ $p.venue }}</div>
+              {{ with $p.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

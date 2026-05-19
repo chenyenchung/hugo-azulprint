@@ -1,0 +1,2 @@
+{{- $lang := .Type | default "text" -}}
+{{- highlight (trim .Inner "\n") $lang (.Options.Get "options" | default "") -}}

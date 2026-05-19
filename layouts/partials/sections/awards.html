@@ -1,0 +1,30 @@
+{{- $site := .Site -}}
+{{- $cfg := $site.Params.awards | default dict -}}
+{{- $k := $cfg.featuredCount | default 3 -}}
+{{- $section := $site.GetPage "awards" -}}
+{{- $featured := slice -}}
+{{- with $section -}}
+  {{- $featured = where .Pages "Params.featured" true -}}
+  {{- $featured = $featured.ByDate.Reverse | first $k -}}
+{{- end -}}
+{{- if $featured -}}
+<section class="sec sec--awards" id="{{ .id | default "awards" }}">
+  {{ partial "sections/_header.html" . }}
+  {{ with $section }}{{ with .Content }}<div class="awards-intro">{{ . }}</div>{{ end }}{{ end }}
+  <div class="awards">
+    {{ range $featured }}
+      {{- $a := .Params -}}
+      <div class="award{{ if $a.featured }} award--featured{{ end }}">
+        <div class="yr">{{ $a.year }}</div>
+        <div>
+          <div class="ttl">{{ .Title }}</div>
+          {{ with $a.org }}<div class="org">{{ . }}</div>{{ end }}
+          {{ with $a.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+        </div>
+        <span class="kind {{ $a.category }}">{{ $a.category | default "award" }}</span>
+      </div>
+    {{ end }}
+  </div>
+  <p class="awards-more"><a href="/awards/">all awards →</a></p>
+</section>
+{{- end -}}

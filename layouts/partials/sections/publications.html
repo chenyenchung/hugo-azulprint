@@ -1,0 +1,31 @@
+{{- $site := .Site -}}
+{{- $cfg := $site.Params.publications | default dict -}}
+{{- $k := $cfg.featuredCount | default 3 -}}
+{{- $aliases := $cfg.authorAliases | default slice -}}
+{{- $section := $site.GetPage "publications" -}}
+{{- $featured := slice -}}
+{{- with $section -}}
+  {{- $featured = where .Pages "Params.featured" true -}}
+  {{- $featured = $featured.ByDate.Reverse | first $k -}}
+{{- end -}}
+{{- if $featured -}}
+<section class="sec sec--publications pubs" id="{{ .id | default "publications" }}">
+  {{ partial "sections/_header.html" . }}
+  {{ with $section }}{{ with .Content }}<div class="pubs-intro">{{ . }}</div>{{ end }}{{ end }}
+  <div class="pub-list">
+    {{ range $featured }}
+      {{- $p := .Params -}}
+      <div class="pub">
+        <div class="yr">{{ $p.year }}</div>
+        <div>
+          <a class="ttl" href="{{ $p.doi_url }}"{{ if $site.Params.linkExternalNewTab }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
+          <div class="au">{{ partial "publications/authors.html" (dict "authors" $p.authors "aliases" $aliases) }}</div>
+          <div class="vn">{{ $p.venue }}</div>
+          {{ with $p.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+  <p class="pubs-more"><a href="/publications/">all publications →</a></p>
+</section>
+{{- end -}}

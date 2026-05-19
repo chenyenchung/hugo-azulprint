@@ -1,0 +1,37 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  {{- with .Site.Params.description }}<meta name="description" content="{{ . }}" />{{ end }}
+
+  {{- partial "head-extra.html" . -}}
+
+  {{- $fontsURL := .Site.Params.fonts.url | default "https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" }}
+  {{- if $fontsURL }}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{{ $fontsURL }}" />
+  {{- end }}
+
+  {{- with .Site.Params.brandFont }}
+    {{- with .url }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
+  {{- end }}
+
+  {{ $css := resources.Get "css/azulprint.css" | resources.Minify | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+  {{- with .Site.Params.accent }}
+  <style>:root { --accent: {{ . }}; }</style>
+  {{- end }}
+  {{- with .Site.Params.brandFont.family }}
+  <style>:root { --brand: {{ . | safeCSS }}; }</style>
+  {{- end }}
+
+  {{- if (default true .Site.Params.rss.enabled) }}
+    {{- with .OutputFormats.Get "RSS" }}
+  <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}" />
+    {{- end }}
+  {{- end }}
+
+  {{- partial "head-custom.html" . -}}
+</head>

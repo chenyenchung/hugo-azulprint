@@ -1,0 +1,32 @@
+<header class="topnav">
+  <a class="brand" href="{{ "/" | relURL }}" style="border:0;">{{ .Site.Title }}</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <nav id="primary-nav">
+    {{- range .Site.Menus.main }}
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{- end }}
+    {{- partial "nav-custom.html" . -}}
+  </nav>
+</header>
+<script>
+  (function () {
+    var btn = document.querySelector('.topnav .nav-toggle');
+    var nav = document.getElementById('primary-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      nav.toggleAttribute('data-open', !open);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        btn.setAttribute('aria-expanded', 'false');
+        nav.removeAttribute('data-open');
+      }
+    });
+  })();
+</script>

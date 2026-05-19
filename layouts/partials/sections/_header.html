@@ -1,0 +1,9 @@
+{{- /*
+  Shared section header chrome: §N + label + rule.
+  Receives the section context dict; reads .num and .label.
+*/ -}}
+<div class="sec-hd">
+  {{- with .num }}<span class="num">§{{ . }}</span>{{ end }}
+  <span class="label">{{ .label }}</span>
+  <span class="rule"></span>
+</div>

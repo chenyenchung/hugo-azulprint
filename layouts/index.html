@@ -1,0 +1,64 @@
+{{ define "main" }}
+{{- $site := .Site -}}
+{{- $ctx  := . -}}
+
+{{- /* Section list: user-configured, or theme-shipped default. */ -}}
+{{- $sections := $site.Params.sections -}}
+{{- if not $sections -}}
+  {{- with (index hugo.Data "azulprint_defaults") -}}
+    {{- $sections = .sections -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $counter := 0 -}}
+{{- range $sections -}}
+  {{- if .hidden -}}{{- continue -}}{{- end -}}
+  {{- $kind := .kind -}}
+  {{- if not $kind -}}
+    {{- errorf "hugo-azulprint: section entry is missing 'kind' (entry: %v)" . -}}
+    {{- continue -}}
+  {{- end -}}
+
+  {{- /* Numbering: explicit num wins; otherwise auto-increment unless unnumbered. */ -}}
+  {{- $num := "" -}}
+  {{- if .num -}}
+    {{- $num = .num -}}
+  {{- else if not .unnumbered -}}
+    {{- $counter = add $counter 1 -}}
+    {{- $num = $counter -}}
+  {{- end -}}
+
+  {{- /* Resolve content page / data. */ -}}
+  {{- $page := false -}}
+  {{- with .page -}}{{- $page = $site.GetPage . -}}{{- end -}}
+  {{- $data := false -}}
+  {{- with .data -}}{{- $data = index $site.Data . -}}{{- end -}}
+
+  {{- /* Label precedence: entry → page front-matter → i18n key → humanized kind. */ -}}
+  {{- $label := "" -}}
+  {{- with .label -}}{{- $label = . -}}{{- end -}}
+  {{- if and (not $label) $page -}}
+    {{- with $page.Params.label -}}{{- $label = . -}}{{- end -}}
+  {{- end -}}
+  {{- if not $label -}}{{- $label = i18n (printf "section_%s" $kind) -}}{{- end -}}
+  {{- if not $label -}}{{- $label = humanize $kind -}}{{- end -}}
+
+  {{- $entryCtx := dict
+      "kind"    $kind
+      "id"      (.id | default $kind)
+      "num"     $num
+      "label"   $label
+      "page"    $page
+      "section" (.section | default "")
+      "data"    $data
+      "params"  .
+      "Site"    $site
+      "ctx"     $ctx -}}
+
+  {{- if templates.Exists (printf "partials/sections/%s.html" $kind) -}}
+    {{- partial (printf "sections/%s.html" $kind) $entryCtx -}}
+  {{- else -}}
+    {{- errorf "hugo-azulprint: no renderer found for section kind %q — create layouts/partials/sections/%s.html" $kind $kind -}}
+  {{- end -}}
+{{- end -}}
+{{ end }}

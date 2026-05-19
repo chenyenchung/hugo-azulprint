@@ -1,0 +1,22 @@
+{{- /*
+  Render an authors list, bolding any entry that matches one of the site
+  author aliases (case-insensitive exact match against the normalized
+  "Family, G.I." string the build script produces).
+
+  Receives:
+    authors  []string
+    aliases  []string
+*/ -}}
+{{- $authors := .authors -}}
+{{- $aliasSet := dict -}}
+{{- range .aliases -}}
+  {{- $aliasSet = merge $aliasSet (dict (lower .) true) -}}
+{{- end -}}
+{{- range $i, $a := $authors -}}
+  {{- if $i }}, {{ end -}}
+  {{- if index $aliasSet (lower $a) -}}
+    <b class="self">{{ $a }}</b>
+  {{- else -}}
+    {{ $a }}
+  {{- end -}}
+{{- end -}}

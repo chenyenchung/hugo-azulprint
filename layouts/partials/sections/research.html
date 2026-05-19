@@ -1,0 +1,16 @@
+{{- $page := .page -}}
+{{- if and $page $page.Params.interests -}}
+<section class="sec sec--research" id="{{ .id | default "research" }}">
+  {{ partial "sections/_header.html" . }}
+  <div class="grid2">
+    {{ range $page.Params.interests }}
+    <div class="card">
+      <i class="blueprint-corners"><i></i><i></i><i></i><i></i></i>
+      {{ with .pin }}<span class="pin">{{ . }}</span>{{ end }}
+      <h3>{{ .title }}</h3>
+      <p>{{ .body | markdownify }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{- end -}}

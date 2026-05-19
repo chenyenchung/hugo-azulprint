@@ -1,0 +1,6 @@
+{{- $dateFmt := .Site.Params.dateFormats.footer | default "02 Jan 2006" -}}
+<footer class="site">
+  <div>© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</div>
+  <div class="made">{{ i18n "footer_last_updated" (now.Format $dateFmt) | default (printf "last updated · %s" (now.Format $dateFmt)) }}</div>
+  {{- partial "footer-custom.html" . -}}
+</footer>

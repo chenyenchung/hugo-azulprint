@@ -1,0 +1,25 @@
+{{- $page := .page -}}
+{{- $site := .Site -}}
+{{- if $page -}}
+<section class="sec sec--contact" id="{{ .id | default "contact" }}">
+  {{ partial "sections/_header.html" . }}
+  <div class="contact">
+    {{ with $site.Params.email }}
+    <div class="blk">
+      <div class="lbl">{{ i18n "contact_email_label" | default "Email" }}</div>
+      <a class="email" href="mailto:{{ . }}">{{ . }}</a>
+    </div>
+    {{ end }}
+    {{ with $page.Params.links }}
+    <div class="blk">
+      <div class="lbl">{{ i18n "contact_elsewhere_label" | default "Elsewhere" }}</div>
+      <div class="links">
+        {{ range . }}
+          <div><a href="{{ .url }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a></div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{- end -}}

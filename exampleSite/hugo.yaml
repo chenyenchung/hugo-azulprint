@@ -1,0 +1,92 @@
+# Site identity
+title: "Barbara McClintock"
+baseURL: "https://barbaramcclintock.example/"
+locale: "en-us"
+theme: "hugo-azulprint"
+
+# Theme params — these drive the design
+params:
+  author: "Barbara McClintock, PhD"
+  email: "mcclintock@cshl.example"
+  scholar: "https://scholar.google.com/citations?user=XXXXXXXXXX"
+  cv: "/cv.pdf"
+  intro: "a cytogeneticist at <strong>Cold Spring Harbor Laboratory</strong>. I work on the genetic and chromosomal basis of maize variegation, and on the controlling elements that travel through the genome."
+  # portrait: "/portrait.jpg"   # optional; falls back to initials
+
+  # Visual knobs
+  palette: "clinical"      # clinical | frost | frost-max | glacier
+  density: "regular"       # compact | regular | airy
+  # accent: "#2a6486"      # optional one-color override for the chosen palette
+
+  # Hero tags
+  tags:
+    - maize cytogenetics
+    - transposable elements
+    - chromosome structure
+    - gene regulation
+    - developmental genetics
+
+  # Aside box in the About section (optional)
+  aside:
+    label: "currently"
+    body: |
+      Mapping controlling elements in maize at **Cold Spring Harbor**.
+
+      *Always open to a good cob.*
+
+  # Homepage composition. Reorder, hide (`hidden: true`), or duplicate entries.
+  # Add a new kind by dropping layouts/partials/sections/<kind>.html in your site
+  # and adding an entry here. If unset, defaults from data/azulprint_defaults.yaml apply.
+  sections:
+    - { kind: hero,         id: hero,         unnumbered: true }
+    - { kind: about,        id: about,        page: "/" }
+    - { kind: research,     id: research,     page: "research" }
+    - { kind: publications, id: publications, page: "publications", label: "Featured publications" }
+    - { kind: awards,       id: awards,       page: "awards",       label: "Featured awards" }
+    - { kind: posts,        id: posts,        section: "posts" }
+    - { kind: contact,      id: contact,      page: "contact" }
+
+  # Limit homepage post cards (the full archive is at /posts/).
+  postsLimit: 3
+
+  # Date formatting (Go time layout).
+  dateFormats:
+    postSingle: "January 2, 2006"
+    postList:   "Jan 2, 2006"
+    postCard:   "02 Jan 2006"
+    footer:     "02 Jan 2006"
+
+  # Publications block. The source of truth is data/publications.yaml (DOI list).
+  # `scripts/build-publications.py` fetches CrossRef metadata and writes one
+  # non-rendered Hugo page per DOI under content/publications/.
+  publications:
+    featuredCount: 3                # max featured entries shown in the homepage section
+    authorAliases:                  # any author string matching one of these is bolded
+      - "McClintock, B."
+      - "McClintock B"
+      - "Barbara McClintock"
+
+  # Awards block. The source of truth is data/awards.yaml (entry list).
+  # `scripts/build-awards.py` writes one non-rendered Hugo page per entry
+  # under content/awards/.
+  awards:
+    featuredCount: 3                # max featured entries shown in the homepage section
+
+  # Link behavior
+  linkExternalNewTab: true
+
+  # Optional: override the Google Fonts <link> (e.g. self-host).
+  # fonts: { url: "/css/fonts.css" }
+
+  rss:
+    enabled: true
+
+# Top-bar nav
+menu:
+  main:
+    - { name: "About",        url: "/#about",        weight: 10 }
+    - { name: "Research",     url: "/#research",     weight: 20 }
+    - { name: "Publications", url: "/#publications", weight: 30 }
+    - { name: "Awards",       url: "/#awards",       weight: 40 }
+    - { name: "Notes",        url: "/posts/",        weight: 50 }
+    - { name: "Contact",      url: "/#contact",      weight: 60 }

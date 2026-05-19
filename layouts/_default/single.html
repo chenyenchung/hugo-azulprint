@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{- $dateFmt := .Site.Params.dateFormats.postSingle | default "January 2, 2006" -}}
+<article class="post-single">
+  <div class="meta">{{ .Date.Format $dateFmt }}{{ with .Params.tags }} · {{ delimit . " · " }}{{ end }}</div>
+  <h1>{{ .Title }}</h1>
+  <div class="body">{{ .Content }}</div>
+</article>
+{{ end }}

@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{- $pages := .Pages.ByDate.Reverse -}}
+<section class="sec sec--awards-timeline">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ .Title }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ with .Content }}<div class="awards-intro">{{ . }}</div>{{ end }}
+  <div class="awards-timeline">
+    {{ range ($pages.GroupByParamDate "date" "2006") }}
+      <div class="yr-group">
+        <div class="yr">{{ .Key }}</div>
+        <div class="awards">
+          {{ range .Pages }}
+            {{- $a := .Params -}}
+            <div class="award{{ if $a.featured }} award--featured{{ end }}">
+              <div>
+                <div class="ttl">{{ .Title }}</div>
+                {{ with $a.org }}<div class="org">{{ . }}</div>{{ end }}
+                {{ with $a.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+              </div>
+              <span class="kind {{ $a.category }}">{{ $a.category | default "award" }}</span>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

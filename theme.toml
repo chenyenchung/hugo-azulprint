@@ -1,0 +1,11 @@
+name = "hugo-azulprint"
+license = "MIT"
+licenselink = "https://github.com/example/hugo-azulprint/blob/main/LICENSE"
+description = "A quiet, academically-serious personal site theme set in Inria Sans — modular section archetypes for about, research, publications, awards, notes, and contact."
+homepage = "https://github.com/example/hugo-azulprint"
+tags = ["personal", "academic", "minimal", "sans-serif", "modular"]
+features = ["responsive", "publications", "awards", "i18n", "render-hooks", "section-archetypes"]
+min_version = "0.110.0"
+
+[author]
+  name = "hugo-azulprint contributors"

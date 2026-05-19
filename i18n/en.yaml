@@ -1,0 +1,24 @@
+# hugo-azulprint theme — English UI strings.
+# Override in your site by adding i18n/<lang>.yaml.
+
+# Section default labels (used when entry/page front-matter doesn't override).
+section_about:           "About"
+section_research:        "Research interests"
+section_publications:    "Publications"
+section_awards:          "Awards & funding"
+section_posts:           "Notes & writing"
+section_contact:         "Contact"
+
+# Section chrome
+contact_email_label:     "Email"
+contact_elsewhere_label: "Elsewhere"
+posts_read_more:         "read →"
+
+# Publications block
+pubs_auto_blurb:         "auto · synced nightly"
+pubs_source_default:     "Google Scholar"
+pubs_open_profile:       "open profile →"
+pubs_cited_by:           "cited by {{ . }}"
+
+# Footer
+footer_last_updated:     "last updated · {{ . }}"

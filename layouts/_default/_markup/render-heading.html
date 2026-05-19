@@ -1,0 +1,2 @@
+{{- /* Emit a slug ID so post bodies support #fragment links; no visible anchor chrome. */ -}}
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }}</h{{ .Level }}>

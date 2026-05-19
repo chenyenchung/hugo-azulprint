@@ -1,0 +1,21 @@
+{{- $site := .Site -}}
+{{- $section := .section | default "posts" -}}
+{{- $limit := .params.limit | default $site.Params.postsLimit | default 3 -}}
+{{- $dateFmt := $site.Params.dateFormats.postCard | default "02 Jan 2006" -}}
+{{- $posts := where ($site.RegularPages.ByDate.Reverse) "Section" $section -}}
+{{- $posts = first $limit $posts -}}
+{{- if $posts -}}
+<section class="sec sec--posts" id="{{ .id | default "posts" }}">
+  {{ partial "sections/_header.html" . }}
+  <div class="posts">
+    {{ range $posts }}
+    <a class="post-card" href="{{ .RelPermalink }}">
+      <div class="date">{{ .Date.Format $dateFmt }}</div>
+      <h4>{{ .Title }}</h4>
+      <p>{{ .Summary | plainify | truncate 180 }}</p>
+      <span class="arrow">{{ i18n "posts_read_more" | default "read →" }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{- end -}}

@@ -1,0 +1,40 @@
+# Source of truth for awards & funding. Each entry is a free-form record:
+#   - title:       the award name (string, required)
+#   - year:        award year (int or "YYYY"-style string, required)
+#   - org:         awarding organization (string, optional)
+#   - category:    "award" | "funding" — drives the chip styling (optional)
+#   - featured:    true → eligible for the homepage section (top-k newest shown)
+#   - alt_text:    optional one-line note rendered under the org on cards
+#
+# scripts/build-awards.py writes one Hugo page per entry under
+# content/awards/<slug>/ with build.render = never and build.list = local —
+# the page exists in .Pages for the /awards/ list template but produces
+# no standalone HTML. Run `python scripts/build-awards.py` after editing.
+
+- title: "Nobel Prize in Physiology or Medicine"
+  year: 1983
+  org: "Nobel Foundation"
+  category: "award"
+  featured: true
+
+- title: "MacArthur Fellowship"
+  year: 1981
+  org: "MacArthur Foundation"
+  category: "funding"
+  featured: true
+
+- title: "Albert Lasker Basic Medical Research Award"
+  year: 1981
+  org: "Lasker Foundation"
+  category: "award"
+  featured: true
+
+- title: "National Medal of Science"
+  year: 1970
+  org: "United States of America"
+  category: "award"
+
+- title: "Achievement Award"
+  year: 1947
+  org: "American Association of University Women"
+  category: "award"

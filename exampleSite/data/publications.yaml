@@ -1,0 +1,32 @@
+# Source of truth for publications. Each entry is just a DOI plus curation flags:
+#   - doi:         the publication DOI (string)
+#   - featured:    true → eligible for the homepage section (top-k newest shown)
+#   - alt_text:    optional one-line note rendered under the venue on cards
+#   - description: optional curator/internal note; passed through to the
+#                  generated frontmatter but NOT rendered. Use it for notes
+#                  you want to keep next to the DOI without showing on the site.
+#
+# Per-publication metadata (title, authors, venue, year) is fetched from CrossRef
+# by scripts/build-publications.py and written to content/publications/<slug>/.
+# Run `python scripts/build-publications.py` after editing this file.
+#
+# These example DOIs resolve in CrossRef; replace them with your own publications.
+
+- doi: "10.1126/science.15739260"   # McClintock, Science 1984 (Nobel lecture)
+  featured: true
+  alt_text: "The significance of responses of the genome to challenge."
+  description: "Lead pick for the homepage — Nobel lecture reframing transposition as a stress response."
+
+- doi: "10.1073/pnas.36.6.344"   # McClintock, PNAS 1950 (mutable loci)
+  featured: true
+  alt_text: "First description of mutable loci — what would later be called transposable elements."
+
+- doi: "10.1073/pnas.17.8.492"   # Creighton & McClintock, PNAS 1931 (cytological crossing-over)
+  featured: true
+  alt_text: "Cytological proof that genetic crossing-over reflects physical exchange between chromosomes."
+
+# Preprints use the 10.1101 (bioRxiv) or 10.48550 (arXiv) DOI prefixes; the
+# build script automatically reports the venue as "bioRxiv" / "arXiv". Add your
+# own preprints here, e.g.:
+# - doi: "10.1101/2020.10.15.341578"
+#   featured: false
