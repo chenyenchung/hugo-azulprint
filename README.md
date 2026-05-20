@@ -1,17 +1,14 @@
 # hugo-azulprint — a Hugo theme
 
-A quiet, academically-serious personal site theme — set in Inria Sans, the
-humanist sans designed for the French national research institute. Cool
-clinical palette by default, with three other icy/sterile variants.
+`azulprint` is a quietly icy theme for academic profile sites built with Hugo.
 
 Homepage is composed from **section archetypes** — reusable kinds you can
 reorder, toggle, or extend without forking the theme. Seven archetypes ship
 out of the box (hero, about, research, publications, awards, posts, contact);
 add your own by dropping a partial under `layouts/partials/sections/<kind>.html`.
 
-The `exampleSite/` is populated as Barbara McClintock's personal site — a
-deliberately historical stand-in so it's never mistaken for the theme owner's
-real page. Replace its contents with your own when you adopt the theme.
+The `exampleSite/` is populated as [Barbara McClintock's personal site](https://chenyenchung.github.io/hugo-azulprint/)
+to give you a feel of how it would look like. Replace its contents with your own when you adopt the theme.
 
 ## Quick start
 
@@ -230,4 +227,4 @@ adopting the theme.
 
 ## License
 
-MIT.
+MIT
