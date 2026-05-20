@@ -409,14 +409,14 @@ a.pub .ttl, .pub a.ttl { color: var(--ink); }
   color: var(--ink-dim); line-height: 1.5; text-wrap: pretty;
 }
 
-/* "all publications →" link under the homepage featured list */
-.pubs-more {
+/* "all publications →" / "more ways to reach me →" links under homepage sections */
+.pubs-more, .contact-more {
   margin: 14px 0 0; font-family: var(--sans); font-size: 11.5px;
   font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
   text-align: right;
 }
-.pubs-more a { color: var(--accent-2); }
-.pubs-more a:hover { color: var(--ink); }
+.pubs-more a, .contact-more a { color: var(--accent-2); }
+.pubs-more a:hover, .contact-more a:hover { color: var(--ink); }
 
 /* ─── Publications timeline (/publications/) ─────────────── */
 .pubs-timeline { display: flex; flex-direction: column; gap: 32px; }
@@ -541,11 +541,22 @@ a.pub .ttl, .pub a.ttl { color: var(--ink); }
 }
 
 /* ─── Contact ────────────────────────────────────────────── */
-.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
 .contact .blk {
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 2px; padding: 24px 26px;
+  min-width: 0;
 }
+.contact-intro {
+  font-family: var(--serif); font-size: 16px; line-height: 1.65;
+  color: var(--ink); margin-bottom: 22px;
+}
+.contact-intro p { margin: 0 0 0.8em; }
+.contact-intro p:last-child { margin-bottom: 0; }
 .contact .lbl {
   font-family: var(--sans); font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .14em;
@@ -655,7 +666,6 @@ footer.site .made { font-family: var(--sans); font-size: inherit; }
   .grid2 { grid-template-columns: 1fr; }
   .about { grid-template-columns: 1fr; }
   .posts { grid-template-columns: 1fr; }
-  .contact { grid-template-columns: 1fr; }
   .award { grid-template-columns: 70px 1fr; }
   .award .kind { grid-column: 2; justify-self: start; margin-top: 4px; }
   .post-list-item { grid-template-columns: 1fr; gap: 6px; }

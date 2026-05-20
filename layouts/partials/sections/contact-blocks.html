@@ -1,0 +1,32 @@
+{{- /*
+  Email + per-box link cards used by both the homepage contact section and the
+  standalone /contact/ page. Accepts:
+    page         — Hugo Page (its Params.links holds the box list)
+    Site         — Hugo Site (Params.email is read here)
+    featuredOnly — if true, only boxes with .feature truthy are rendered
+*/ -}}
+{{- $page := .page -}}
+{{- $site := .Site -}}
+{{- $featuredOnly := .featuredOnly -}}
+{{- if $page -}}
+<div class="contact">
+  {{ with $site.Params.email }}
+  <div class="blk">
+    <div class="lbl">{{ i18n "contact_email_label" | default "Email" }}</div>
+    <a class="email" href="mailto:{{ . }}">{{ . }}</a>
+  </div>
+  {{ end }}
+  {{ range $page.Params.links }}
+    {{ if or (not $featuredOnly) .feature }}
+    <div class="blk">
+      <div class="lbl">{{ .title }}</div>
+      <div class="links">
+        {{ range .items }}
+          <div><a href="{{ .url }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a></div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
+</div>
+{{- end -}}

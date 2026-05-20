@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="sec sec--contact">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ .Title }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ with .Content }}<div class="contact-intro">{{ . }}</div>{{ end }}
+  {{ partial "sections/contact-blocks.html" (dict "page" . "Site" .Site) }}
+</section>
+{{ end }}
