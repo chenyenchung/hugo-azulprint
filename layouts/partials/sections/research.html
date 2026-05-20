@@ -6,7 +6,6 @@
     {{ range $page.Params.interests }}
     <div class="card">
       <i class="blueprint-corners"><i></i><i></i><i></i><i></i></i>
-      {{ with .pin }}<span class="pin">{{ . }}</span>{{ end }}
       <h3>{{ .title }}</h3>
       <p>{{ .body | markdownify }}</p>
     </div>

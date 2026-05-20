@@ -315,16 +315,10 @@ a:hover { color: var(--ink); }
 .blueprint-corners > i:nth-child(2) { top: 0;    right: 0; }
 .blueprint-corners > i:nth-child(3) { bottom: 0; left: 0; }
 .blueprint-corners > i:nth-child(4) { bottom: 0; right: 0; }
-.card .pin {
-  position: absolute; top: 24px; right: 24px;
-  font-family: var(--sans); font-size: 10.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .14em;
-  color: var(--accent-2);
-}
 .card h3 {
   margin: 0 0 10px; font-size: 18px; font-weight: 700;
   line-height: 1.25; letter-spacing: -.015em;
-  padding-right: 80px; color: var(--ink);
+  color: var(--ink);
 }
 .card p {
   margin: 0; font-size: 14.5px; line-height: 1.55;
@@ -639,7 +633,6 @@ footer.site .made { font-family: var(--sans); font-size: inherit; }
   .contact { grid-template-columns: 1fr; }
   .award { grid-template-columns: 70px 1fr; }
   .award .kind { grid-column: 2; justify-self: start; margin-top: 4px; }
-  .card h3 { padding-right: 0; }
   .post-list-item { grid-template-columns: 1fr; gap: 6px; }
 
   /* Hamburger nav */
