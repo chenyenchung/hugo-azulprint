@@ -204,7 +204,7 @@ a:hover { color: var(--ink); }
   margin-top: 4px;
 }
 .hero .intro { min-width: 0; }
-.hero .hi {
+.hero .intro > :first-child {
   margin: 0 0 22px;
   font-family: var(--sans);
   font-size: 28px;
@@ -215,7 +215,7 @@ a:hover { color: var(--ink); }
   font-weight: 400;
   max-width: 660px;
 }
-.hero .hi .name { font-style: italic; font-weight: 500; color: inherit; }
+.hero .intro em { font-style: italic; font-weight: 500; color: inherit; }
 
 .hero .tags { margin: 0 0 18px; display: flex; gap: 6px; flex-wrap: wrap; }
 
@@ -651,7 +651,7 @@ footer.site .made { font-family: var(--sans); font-size: inherit; }
   .page { padding: 40px 24px 64px; }
   .page > .coord-tl, .page > .coord-br { display: none; }
   .hero { grid-template-columns: 1fr; gap: 24px; margin-bottom: 64px; }
-  .hero .hi { font-size: 24px; }
+  .hero .intro > :first-child { font-size: 24px; }
   .grid2 { grid-template-columns: 1fr; }
   .about { grid-template-columns: 1fr; }
   .posts { grid-template-columns: 1fr; }
@@ -687,7 +687,7 @@ footer.site .made { font-family: var(--sans); font-size: inherit; }
     font-size: 22px; padding-bottom: 10px;
     box-shadow: 0 0 0 1px var(--line), 0 0 0 4px var(--paper), 0 0 0 5px var(--line-soft);
   }
-  .hero .hi { font-size: 22px; }
+  .hero .intro > :first-child { font-size: 22px; }
   .sec { margin-bottom: 56px; }
   .sec-hd { gap: 12px; margin-bottom: 22px; }
   .card, .contact .blk { padding: 20px 18px; }

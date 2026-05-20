@@ -30,8 +30,8 @@ template syntax. Prose sections (about, post bodies) live in Markdown body.
 
 | Section      | Where the data is                          |
 |--------------|--------------------------------------------|
-| Hero         | `hugo.yaml` `params.*` — `author`, `intro`, `tags`, `email`, `scholar`, `cv`, `portrait` |
-| About        | `content/_index.md` Markdown body; optional `params.aside` box |
+| Hero         | `content/hero.md` Markdown body (intro) + front matter (`keywords`); identity in `hugo.yaml` `params.*` — `author`, `email`, `scholar`, `cv`, `portrait` |
+| About        | `content/_index.md` Markdown body; optional `aside` in its front matter |
 | Research     | `content/research.md` front matter (list of `interests`) |
 | Publications | `data/publications.yaml` (DOI list) → per-DOI pages via `scripts/build-publications.py` |
 | Awards       | `data/awards.yaml` (entry list) → per-award pages via `scripts/build-awards.py` |
@@ -94,24 +94,51 @@ most neutral; `frost-max` is the highest-contrast.
 
 ## Hero & site identity
 
+Identity bits live in `hugo.yaml`:
+
 ```yaml
 params:
-  author:   "Barbara McClintock, PhD"           # full name + degree
+  author:   "Barbara McClintock, PhD"           # full name + degree (portrait initials fallback)
   email:    "mcclintock@cshl.example"           # mailto link
   scholar:  "https://scholar.google.com/..."    # Scholar profile
   cv:       "/cv.pdf"                           # CV link
   # portrait: "/portrait.jpg"                   # falls back to initials if unset
-  intro:    "a cytogeneticist at <strong>Cold Spring Harbor Laboratory</strong>. …"
-  tags:     ["maize cytogenetics", "transposable elements", …]
-  aside:                                        # optional callout in /about
-    label: "currently"
-    body:  |
-      Mapping controlling elements in maize at **Cold Spring Harbor**.
 ```
 
-`intro` is rendered as `safeHTML` (so a couple of `<strong>` tags are fine);
-the hero shows it after an em-dash following the name. If unset, the hero is
-just the name. `aside.body` is rendered as Markdown.
+The hero's intro prose and chips live in `content/hero.md`:
+
+```markdown
+---
+title: "Hero"
+keywords:
+  - maize cytogenetics
+  - transposable elements
+build:
+  render: never   # don't emit /hero/ as a standalone page
+  list: local
+---
+
+Hi, I'm *Barbara McClintock* — a cytogeneticist at **Cold Spring Harbor
+Laboratory**.
+```
+
+The body is rendered as Markdown — author chooses their own greeting. If
+`content/hero.md` is absent, the hero still renders the portrait and links.
+
+The About section's optional callout lives in `content/_index.md` front
+matter:
+
+```yaml
+---
+title: "…"
+aside:
+  label: "currently"
+  body: |
+    Mapping controlling elements in maize at **Cold Spring Harbor**.
+---
+```
+
+`aside.body` is rendered as Markdown.
 
 ## Publications
 

@@ -1,5 +1,14 @@
 ---
 title: "hugo-azulprint — example site"
+aside:
+  label: "try this"
+  body: |
+    Switch `params.palette` to **`frost`**, **`frost-max`**, or **`glacier`**
+    and `params.density` to **`compact`** or **`airy`** to see the same
+    page redrawn.
+
+    Section composition lives in `params.sections` — reorder, hide
+    (`hidden: true`), or add your own kind.
 ---
 
 This is the example site for **hugo-azulprint**, a Hugo theme for academic

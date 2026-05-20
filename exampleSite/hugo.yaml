@@ -10,7 +10,6 @@ params:
   email: "you@example.org"
   scholar: "https://scholar.google.com/citations?user=PLACEHOLDER"
   cv: "/cv.pdf"
-  intro: "a quietly icy Hugo theme for academic profile sites. You're reading the example site, dressed up as a stylized <em>Barbara McClintock</em> so the section archetypes feel like real content."
   # portrait: "/portrait.jpg"   # optional; falls back to initials
 
   # Visual knobs
@@ -18,30 +17,11 @@ params:
   density: "regular"       # compact | regular | airy
   # accent: "#2a6486"      # optional one-color override for the chosen palette
 
-  # Hero tags
-  tags:
-    - academic profile
-    - hugo theme
-    - blueprint chrome
-    - configurable palettes
-    - section archetypes
-
-  # Aside box in the About section (optional)
-  aside:
-    label: "try this"
-    body: |
-      Switch `params.palette` to **`frost`**, **`frost-max`**, or **`glacier`**
-      and `params.density` to **`compact`** or **`airy`** to see the same
-      page redrawn.
-
-      Section composition lives in `params.sections` — reorder, hide
-      (`hidden: true`), or add your own kind.
-
   # Homepage composition. Reorder, hide (`hidden: true`), or duplicate entries.
   # Add a new kind by dropping layouts/partials/sections/<kind>.html in your site
   # and adding an entry here. If unset, defaults from data/azulprint_defaults.yaml apply.
   sections:
-    - { kind: hero,         id: hero,         unnumbered: true }
+    - { kind: hero,         id: hero,         page: "hero",         unnumbered: true }
     - { kind: about,        id: about,        page: "/" }
     - { kind: research,     id: research,     page: "research" }
     - { kind: publications, id: publications, page: "publications", label: "Featured publications" }

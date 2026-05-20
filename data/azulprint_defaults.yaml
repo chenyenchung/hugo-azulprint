@@ -1,7 +1,7 @@
 # Default section composition for the hugo-azulprint homepage.
 # Used when a site has not set its own `params.sections`.
 sections:
-  - { kind: hero,         id: hero,         unnumbered: true }
+  - { kind: hero,         id: hero,         page: "hero",         unnumbered: true }
   - { kind: about,        id: about,        page: "/" }
   - { kind: research,     id: research,     page: "research" }
   - { kind: publications, id: publications, page: "publications" }

@@ -4,7 +4,7 @@
   {{ partial "sections/_header.html" . }}
   <div class="about">
     <div>{{ $page.Content }}</div>
-    {{ with .Site.Params.aside }}
+    {{ with $page.Params.aside }}
     <aside class="aside">
       {{ with .label }}<div class="lbl">{{ . }}</div>{{ end }}
       {{ .body | markdownify }}

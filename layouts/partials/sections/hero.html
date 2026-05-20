@@ -1,4 +1,5 @@
 {{- $site := .Site -}}
+{{- $page := .page -}}
 {{- $author := $site.Params.author | default $site.Title -}}
 <section class="sec sec--hero hero" id="{{ .id | default "hero" }}">
   {{ if $site.Params.portrait }}
@@ -7,10 +8,8 @@
     <div class="portrait" aria-hidden="true">{{ substr $author 0 1 }}{{ substr (index (split $author " ") 1 | default "") 0 1 }}</div>
   {{ end }}
   <div class="intro">
-    <p class="hi">
-      Hi, I&rsquo;m <span class="name">{{ $site.Title }}</span>{{ with $site.Params.intro }} &mdash; {{ . | safeHTML }}{{ end }}
-    </p>
-    {{ with $site.Params.tags }}
+    {{ with $page }}{{ .Content }}{{ end }}
+    {{ with (and $page $page.Params.keywords) }}
     <div class="tags">
       {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
     </div>
