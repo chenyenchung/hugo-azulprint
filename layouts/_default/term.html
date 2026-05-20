@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{- $tag := .Data.Term -}}
+{{- $posts := .Pages.ByDate.Reverse -}}
+{{- $pubs := false -}}
+{{- with site.GetPage "publications" -}}
+  {{- $pubs = where .Pages "Params.tags" "intersect" (slice $tag) -}}
+{{- end -}}
+{{- $awards := false -}}
+{{- with site.GetPage "awards" -}}
+  {{- $awards = where .Pages "Params.tags" "intersect" (slice $tag) -}}
+{{- end -}}
+
+<section class="sec sec--term">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ .Title }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ with .Content }}<div class="term-intro">{{ . }}</div>{{ end }}
+</section>
+
+{{ if $posts }}
+<section class="sec sec--posts">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ i18n "term_posts_label" | default "Posts" }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ partial "post-list.html" (dict "pages" $posts) }}
+</section>
+{{ end }}
+
+{{ if $pubs }}
+<section class="sec sec--pubs-timeline">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ i18n "term_publications_label" | default "Publications" }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ partial "publications/timeline.html" (dict "pages" $pubs) }}
+</section>
+{{ end }}
+
+{{ if $awards }}
+<section class="sec sec--awards-timeline">
+  <div class="sec-hd">
+    <span class="num">§</span>
+    <span class="label">{{ i18n "term_awards_label" | default "Awards" }}</span>
+    <span class="rule"></span>
+  </div>
+  {{ partial "awards/timeline.html" (dict "pages" $awards) }}
+</section>
+{{ end }}
+{{ end }}

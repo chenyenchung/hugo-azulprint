@@ -1,0 +1,26 @@
+{{- /*
+  Awards timeline used by /awards/ and by tag pages.
+  Accepts:
+    pages — slice of award pages; sorted by date desc here.
+*/ -}}
+{{- $pages := .pages.ByDate.Reverse -}}
+<div class="awards-timeline">
+  {{ range ($pages.GroupByParamDate "date" "2006") }}
+    <div class="yr-group">
+      <div class="yr">{{ .Key }}</div>
+      <div class="awards">
+        {{ range .Pages }}
+          {{- $a := .Params -}}
+          <div class="award{{ if $a.featured }} award--featured{{ end }}">
+            <div>
+              <div class="ttl">{{ .Title }}</div>
+              {{ with $a.org }}<div class="org">{{ . }}</div>{{ end }}
+              {{ with $a.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+            </div>
+            <span class="kind kind--{{ $a.category | default "award" }}">{{ $a.category | default "award" }}</span>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</div>

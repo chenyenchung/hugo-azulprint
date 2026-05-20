@@ -1,21 +1,10 @@
 {{ define "main" }}
-{{- $dateFmt := .Site.Params.dateFormats.postList | default "Jan 2, 2006" -}}
 <section class="sec">
   <div class="sec-hd">
     <span class="num">§</span>
     <span class="label">{{ .Title }}</span>
     <span class="rule"></span>
   </div>
-  <div class="post-list">
-    {{ range .Pages.ByDate.Reverse }}
-    <div class="post-list-item">
-      <div class="date">{{ .Date.Format $dateFmt }}</div>
-      <div>
-        <a href="{{ .RelPermalink }}"><h3>{{ .Title }}</h3></a>
-        <div class="ex">{{ .Summary | plainify | truncate 240 }}</div>
-      </div>
-    </div>
-    {{ end }}
-  </div>
+  {{ partial "post-list.html" (dict "pages" .Pages.ByDate.Reverse) }}
 </section>
 {{ end }}

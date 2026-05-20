@@ -1,6 +1,7 @@
 ---
 title: "On the cycle that wouldn't close"
 date: 1948-08-21
+tags: ["chromosomes"]
 summary: "Notes on the breakage-fusion-bridge cycle and the variegated kernels that keep insisting on something more interesting than a steady state."
 ---
 

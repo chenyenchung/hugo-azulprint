@@ -1,6 +1,7 @@
 ---
 title: "Preparing for the Symposium"
 date: 1951-06-04
+tags: ["transposable-elements"]
 summary: "Working out how to present controlling elements to a room that wants a clean story — and bracing for the talk to be heard as 'exception' rather than 'rule.'"
 ---
 

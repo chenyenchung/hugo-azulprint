@@ -1,0 +1,27 @@
+{{- /*
+  Research interest cards used by both the homepage research section and the
+  standalone /research/ page. Accepts:
+    page — Hugo Page whose Params.interests is a list of { tag, label, body }.
+  Each card's title links to /tags/<tag>/ when the corresponding taxonomy
+  term page exists; otherwise it falls back to plain text.
+*/ -}}
+{{- $page := .page -}}
+{{- if and $page $page.Params.interests -}}
+<div class="grid2">
+  {{ range $page.Params.interests }}
+  {{- $tagPage := false -}}
+  {{- with .tag -}}{{- $tagPage = site.GetPage (printf "/tags/%s" .) -}}{{- end -}}
+  <div class="card">
+    <i class="blueprint-corners"><i></i><i></i><i></i><i></i></i>
+    <h3>
+      {{- if $tagPage -}}
+        <a href="{{ $tagPage.RelPermalink }}">{{ .label }}</a>
+      {{- else -}}
+        {{ .label }}
+      {{- end -}}
+    </h3>
+    <p>{{ .body | markdownify }}</p>
+  </div>
+  {{ end }}
+</div>
+{{- end -}}

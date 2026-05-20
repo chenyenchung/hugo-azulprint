@@ -1,0 +1,18 @@
+{{- /*
+  Post list used by /posts/ and by tag pages.
+  Accepts:
+    pages — slice of post pages, in display order.
+*/ -}}
+{{- $pages := .pages -}}
+{{- $dateFmt := site.Params.dateFormats.postList | default "Jan 2, 2006" -}}
+<div class="post-list">
+  {{ range $pages }}
+  <div class="post-list-item">
+    <div class="date">{{ .Date.Format $dateFmt }}</div>
+    <div>
+      <a href="{{ .RelPermalink }}"><h3>{{ .Title }}</h3></a>
+      <div class="ex">{{ .Summary | plainify | truncate 240 }}</div>
+    </div>
+  </div>
+  {{ end }}
+</div>

@@ -10,4 +10,7 @@ build:
 date: '1981-01-01'
 org: MacArthur Foundation
 category: funding
+tags:
+- transposable-elements
+- method
 ---

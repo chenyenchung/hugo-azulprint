@@ -15,4 +15,8 @@ build:
 date: '1984-01-01'
 alt_text: The significance of responses of the genome to challenge.
 description: Lead pick for the homepage — Nobel lecture reframing transposition as a stress response.
+tags:
+- transposable-elements
+- genome-response
+- method
 ---

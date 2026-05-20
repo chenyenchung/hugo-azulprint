@@ -1,11 +1,11 @@
 {{ define "main" }}
-<section class="sec sec--pubs-timeline">
+<section class="sec sec--research">
   <div class="sec-hd">
     <span class="num">§</span>
     <span class="label">{{ .Title }}</span>
     <span class="rule"></span>
   </div>
-  {{ with .Content }}<div class="pubs-intro">{{ . }}</div>{{ end }}
-  {{ partial "publications/timeline.html" (dict "pages" .Pages) }}
+  {{ with .Content }}<div class="research-intro">{{ . }}</div>{{ end }}
+  {{ partial "sections/research-blocks.html" (dict "page" .) }}
 </section>
 {{ end }}

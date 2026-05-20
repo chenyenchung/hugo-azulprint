@@ -10,4 +10,7 @@ build:
 date: '1983-01-01'
 org: Nobel Foundation
 category: award
+tags:
+- transposable-elements
+- genome-response
 ---

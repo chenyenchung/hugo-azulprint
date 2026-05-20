@@ -15,4 +15,6 @@ build:
   list: local
 date: '1931-01-01'
 alt_text: Cytological proof that genetic crossing-over reflects physical exchange between chromosomes.
+tags:
+- chromosomes
 ---

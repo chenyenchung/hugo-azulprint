@@ -14,4 +14,7 @@ build:
   list: local
 date: '1950-01-01'
 alt_text: First description of mutable loci — what would later be called transposable elements.
+tags:
+- transposable-elements
+- chromosomes
 ---

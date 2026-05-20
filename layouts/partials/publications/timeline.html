@@ -1,0 +1,25 @@
+{{- /*
+  Publications timeline used by /publications/ and by tag pages.
+  Accepts:
+    pages — slice of publication pages; sorted by date desc here.
+*/ -}}
+{{- $aliases := site.Params.publications.authorAliases | default slice -}}
+{{- $pages := .pages.ByDate.Reverse -}}
+<div class="pubs-timeline">
+  {{ range ($pages.GroupByParamDate "date" "2006") }}
+    <div class="yr-group">
+      <div class="yr">{{ .Key }}</div>
+      <div class="pubs">
+        {{ range .Pages }}
+          {{- $p := .Params -}}
+          <div class="pub{{ if $p.featured }} pub--featured{{ end }}">
+            <a class="ttl" href="{{ $p.doi_url }}"{{ if site.Params.linkExternalNewTab }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
+            <div class="au">{{ partial "publications/authors.html" (dict "authors" $p.authors "aliases" $aliases) }}</div>
+            <div class="vn">{{ $p.venue }}</div>
+            {{ with $p.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</div>
