@@ -484,6 +484,31 @@ a.pub .ttl, .pub a.ttl { color: var(--ink); }
   background: var(--accent-soft);
 }
 
+/* ─── Awards timeline (/awards/) ─────────────────────────── */
+.awards-timeline { display: flex; flex-direction: column; gap: 32px; }
+.awards-timeline .yr-group {
+  display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+  align-items: start;
+}
+.awards-timeline .yr-group > .yr {
+  font-family: var(--mono); font-size: 13px;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--accent-2); font-weight: 700;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.awards-timeline .yr-group .award {
+  grid-template-columns: 1fr 110px;
+}
+@media (max-width: 880px) {
+  .awards-timeline .yr-group { grid-template-columns: 1fr; gap: 8px; }
+  .awards-timeline .yr-group > .yr { padding-top: 0; border-top: 0; }
+  .awards-timeline .yr-group .award { grid-template-columns: 1fr; }
+  .awards-timeline .yr-group .award .kind {
+    grid-column: 1; justify-self: start; margin-top: 4px;
+  }
+}
+
 /* ─── Posts cards ────────────────────────────────────────── */
 .posts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
 .post-card {
@@ -666,7 +691,8 @@ footer.site .made { font-family: var(--sans); font-size: inherit; }
   .sec { margin-bottom: 56px; }
   .sec-hd { gap: 12px; margin-bottom: 22px; }
   .card, .contact .blk { padding: 20px 18px; }
-  .pub-list, .awards, .pubs-timeline .yr-group .pubs { padding: 0 16px; }
+  .pub-list, .awards, .pubs-timeline .yr-group .pubs,
+  .awards-timeline .yr-group .awards { padding: 0 16px; }
   .pub { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
   .pub .yr { padding-top: 0; }
   .pubs-row .stat { flex-basis: 100%; min-width: 0; }
