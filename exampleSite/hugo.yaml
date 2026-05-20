@@ -1,16 +1,16 @@
 # Site identity
-title: "Barbara McClintock"
+title: "hugo-azulprint — example site"
 baseURL: "https://barbaramcclintock.example/"
 locale: "en-us"
 theme: "hugo-azulprint"
 
 # Theme params — these drive the design
 params:
-  author: "Barbara McClintock, PhD"
-  email: "mcclintock@cshl.example"
-  scholar: "https://scholar.google.com/citations?user=XXXXXXXXXX"
+  author: "Hugo Azulprint"
+  email: "you@example.org"
+  scholar: "https://scholar.google.com/citations?user=PLACEHOLDER"
   cv: "/cv.pdf"
-  intro: "a cytogeneticist at <strong>Cold Spring Harbor Laboratory</strong>. I work on the genetic and chromosomal basis of maize variegation, and on the controlling elements that travel through the genome."
+  intro: "a quietly icy Hugo theme for academic profile sites. You're reading the example site, dressed up as a stylized <em>Barbara McClintock</em> so the section archetypes feel like real content."
   # portrait: "/portrait.jpg"   # optional; falls back to initials
 
   # Visual knobs
@@ -20,19 +20,22 @@ params:
 
   # Hero tags
   tags:
-    - maize cytogenetics
-    - transposable elements
-    - chromosome structure
-    - gene regulation
-    - developmental genetics
+    - academic profile
+    - hugo theme
+    - blueprint chrome
+    - configurable palettes
+    - section archetypes
 
   # Aside box in the About section (optional)
   aside:
-    label: "currently"
+    label: "try this"
     body: |
-      Mapping controlling elements in maize at **Cold Spring Harbor**.
+      Switch `params.palette` to **`frost`**, **`frost-max`**, or **`glacier`**
+      and `params.density` to **`compact`** or **`airy`** to see the same
+      page redrawn.
 
-      *Always open to a good cob.*
+      Section composition lives in `params.sections` — reorder, hide
+      (`hidden: true`), or add your own kind.
 
   # Homepage composition. Reorder, hide (`hidden: true`), or duplicate entries.
   # Add a new kind by dropping layouts/partials/sections/<kind>.html in your site
