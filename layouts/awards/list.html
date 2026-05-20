@@ -20,7 +20,7 @@
                 {{ with $a.org }}<div class="org">{{ . }}</div>{{ end }}
                 {{ with $a.alt_text }}<div class="desc">{{ . }}</div>{{ end }}
               </div>
-              <span class="kind {{ $a.category }}">{{ $a.category | default "award" }}</span>
+              <span class="kind kind--{{ $a.category | default "award" }}">{{ $a.category | default "award" }}</span>
             </div>
           {{ end }}
         </div>

@@ -72,6 +72,11 @@ params:
   awards:
     featuredCount: 3                # max featured entries shown in the homepage section
 
+  # Blueprint chrome — coordinate labels at the page corners.
+  blueprint:
+    coordTL: "N·40.51° / W·73.28°"
+    coordBR: "sheet·B.01 / rev·3.1"
+
   # Link behavior
   linkExternalNewTab: true
 

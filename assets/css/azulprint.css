@@ -485,7 +485,7 @@ a.pub .ttl, .pub a.ttl { color: var(--ink); }
   border: 1px solid var(--line); color: var(--ink-mute);
   white-space: nowrap; background: transparent;
 }
-.award .kind.funding {
+.award .kind.kind--funding {
   color: var(--accent-2); border-color: var(--accent);
   background: var(--accent-soft);
 }
